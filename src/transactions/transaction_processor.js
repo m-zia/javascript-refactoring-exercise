@@ -1,3 +1,4 @@
+//remove this global variable on line 2 and instead declare it as a local variable on line 6 (via 'let')
 var txr = [];
 
 function processTransactions(transActions) {
@@ -10,6 +11,7 @@ function processTransactions(transActions) {
 
     let txCount = {}
 
+    //instead of getting the array length, storing it in a variable and using a for-loop, we can just use forEach on the transActions array
     const numberOfTransactions = transActions.length;
 
     for(var i = 0; i < numberOfTransactions; i++) {
@@ -19,7 +21,7 @@ function processTransactions(transActions) {
 
     txCount = sortByAmountThenName(txCount);
     
-    // Place them back in array for returning
+    // Places them back in array for returning. Could shorten below code by using .map() instead of .forEach
     Object.keys(txCount).forEach(function (key, index) {
         txr[index] = `${key} ${txCount[key]}`;
     });
@@ -27,6 +29,8 @@ function processTransactions(transActions) {
     return txr;
 }
 
+//Could use a simpler sorting function that is easier to read and understand - but maintain the desired result of 
+//the transaction count being sorted in descending order and the transaction name being sorted in ascending order
 function sortByAmountThenName(txCount) {
     let sortedKeys = Object.keys(txCount).sort(function sortingFunction(itemOne, itemTwo) {
         return  txCount[itemTwo] - txCount[itemOne] || itemOne > itemTwo || -(itemOne < itemTwo)}
@@ -40,7 +44,7 @@ function sortByAmountThenName(txCount) {
     return sortedResults;
 }
 
-
+//could probably simplify the function logic into 1 line 
 function validateTransactions(transactions) {
     if(transactions === undefined) {
         return false;
