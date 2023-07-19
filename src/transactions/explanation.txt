@@ -1,4 +1,4 @@
--Removed the global variable 'txr' that was line 2, as it is going to be defined in the processTransactions function anyway.
+-Removed the global variable 'txr' that was on line 2, as it is going to be defined in the processTransactions function anyway.
 
 Inside the processTransactions function:
 - added 'let' when defining the 'txr' variable in the processTransactions function
