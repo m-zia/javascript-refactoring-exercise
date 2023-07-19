@@ -30,13 +30,8 @@ function sortByAmountThenName(txCount) {
 }
 
 
-//could probably simplify the function logic into 1 line 
 function validateTransactions(transactions) {
-    if(transactions === undefined) {
-        return false;
-    } 
-
-    return true;
+    return transactions !== undefined;
 }
 
 module.exports = processTransactions;
