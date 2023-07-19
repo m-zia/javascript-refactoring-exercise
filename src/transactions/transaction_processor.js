@@ -20,20 +20,15 @@ function processTransactions(transActions) {
     return txr;
 }
 
-//Could use a simpler sorting function that is easier to read and understand - but maintain the desired result of 
-//the transaction count being sorted in descending order and the transaction name being sorted in ascending order
+
 function sortByAmountThenName(txCount) {
-    let sortedKeys = Object.keys(txCount).sort(function sortingFunction(itemOne, itemTwo) {
-        return  txCount[itemTwo] - txCount[itemOne] || itemOne > itemTwo || -(itemOne < itemTwo)}
+    return Object.fromEntries(
+        Object.entries(txCount).sort((itemOne, itemTwo) => {
+            return itemTwo[1] - itemOne[1] || itemOne[0].localeCompare(itemTwo[0]);
+        })
     );
-
-    let sortedResults = {};
-    for(let objectKey of sortedKeys) {
-        sortedResults[objectKey] = txCount[objectKey];
-    }
-
-    return sortedResults;
 }
+
 
 //could probably simplify the function logic into 1 line 
 function validateTransactions(transactions) {
