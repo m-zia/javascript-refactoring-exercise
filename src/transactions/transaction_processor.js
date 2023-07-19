@@ -1,9 +1,7 @@
-//remove this global variable on line 2 and instead declare it as a local variable on line 6 (via 'let')
-var txr = [];
 
 function processTransactions(transActions) {
 
-    txr = [];
+    let txr = [];
 
     if(!validateTransactions(transActions)) {
         throw new Error("Undefined collection of transactions")
@@ -11,20 +9,13 @@ function processTransactions(transActions) {
 
     let txCount = {}
 
-    //instead of getting the array length, storing it in a variable and using a for-loop, we can just use forEach on the transActions array
-    const numberOfTransactions = transActions.length;
-
-    for(var i = 0; i < numberOfTransactions; i++) {
-        const transaction = transActions[i];
+    transActions.forEach(transaction => {
         txCount[transaction] ? txCount[transaction] += 1 : txCount[transaction] = 1;
-    }
+    });
 
     txCount = sortByAmountThenName(txCount);
     
-    // Places them back in array for returning. Could shorten below code by using .map() instead of .forEach
-    Object.keys(txCount).forEach(function (key, index) {
-        txr[index] = `${key} ${txCount[key]}`;
-    });
+    txr = Object.entries(txCount).map(([key, value]) => `${key} ${value}`);
 
     return txr;
 }

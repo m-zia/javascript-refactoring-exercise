@@ -1,0 +1,8 @@
+-Removed the global variable 'txr' that was line 2, as it is going to be defined in the processTransactions function anyway.
+
+Inside the processTransactions function:
+- added 'let' when defining the 'txr' variable in the processTransactions function
+- instead of iterating over the transActions array with a for-loop, we have instead decided to use the for-each method to make the code declarative and more readable
+- when converting the txCount object into an array of key-value pairs, we decided to use the Object.entries method instead of Object.keys because it is easier to read and takes up fewer lines of code
+
+
